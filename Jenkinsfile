@@ -15,10 +15,11 @@ pipeline{
         }
         stage('Check') {
                 when {
-                    expression { SOURCE_BRANCH == 'staging' && BRANCH_NAME == 'dev' }
+                    expression { SOURCE_BRANCH == 'staging' }
                 }
             steps {
                 echo 'Yes, source branch is staging'
+                echo BRANCH_NAME
             }
         }
  /*    stage('Checkout') {
