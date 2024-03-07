@@ -19,10 +19,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                script {
-                    def branchName = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
-                    echo branchname
-                }            
+                            
             }
         }
  /*    stage('Checkout') {
