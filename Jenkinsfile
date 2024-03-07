@@ -19,7 +19,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                echo "Target branch is ${BRANCH_NAME}"
+                echo "Target branch is ${env.BRANCH_NAME}"
             }
         }
  /*    stage('Checkout') {
