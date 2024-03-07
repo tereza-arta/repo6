@@ -6,6 +6,12 @@ pipeline{
                     returnStdout: true
                 ).trim()
     }
+    script {
+        def TARGET_BRANCH = sh(
+            script: “git branch --contains ${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}”,
+            returnStdout: true
+        ).trim()
+    }
     stages {
         stage('Hello') {
             steps {
