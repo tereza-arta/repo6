@@ -7,6 +7,13 @@ pipeline{
                 echo 'Hello from me'
             }
         }
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout scmGit(branches: [[name: '*/dev']], extensions: [[$class: 'PreBuildMerge', options: [mergeRemote: 'repo6', mergeTarget: 'dev']]], userRemoteConfigs: [[url: 'https://github.com/tereza-arta/repo6.git']])
+                }
+            }
+        }
         stage('Step 1'){
             when {
                 expression { return params.current_status == "closed" && params.merged == true && params.branch == "dev" }
