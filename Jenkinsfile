@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Check') {
                 when {
-                    expression { SOURCE_BRANCH == 'dev' }
+                    expression { SOURCE_BRANCH == 'staging' }
                 }
             steps {
                 echo 'Yes, source branch is staging'
