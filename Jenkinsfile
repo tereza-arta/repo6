@@ -6,12 +6,6 @@ pipeline{
                     returnStdout: true
                 ).trim()
     }
-    script {
-        def TARGET_BRANCH = sh(
-            script: “git branch --contains ${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}”,
-            returnStdout: true
-        ).trim()
-    }
     stages {
         stage('Hello') {
             steps {
@@ -25,7 +19,10 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                echo "Target branch is ${env.BRANCH_NAME}"
+                script {
+                    def branchName = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+                    echo branchname
+                }            
             }
         }
  /*    stage('Checkout') {
