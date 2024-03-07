@@ -22,6 +22,23 @@ pipeline{
                             
             }
         }
+        stage('Get Merged Branches') {
+            steps {
+                script {
+                    // Run git command to get merged branches
+                    def mergedBranches = sh(script: 'git branch --merged', returnStdout: true).trim()
+                    
+                    // Split the output by newline character
+                    def mergedBranchList = mergedBranches.tokenize('\n')
+                    
+                    // Iterate through each branch name
+                    for (String branch in mergedBranchList) {
+                        // Perform actions with each merged branch name
+                        echo "Merged branch: $branch"
+                    }
+                }
+            }
+        }
  /*    stage('Checkout') {
             steps {
                 SOURCE_BRANCH = sh(
