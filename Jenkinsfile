@@ -5,6 +5,10 @@ pipeline{
                     script: "git log --merges --first-parent origin/main | awk '/Merge pull request/{split(\$NF, arr, \"/\"); print arr[2]}' | head -1",
                     returnStdout: true
                 ).trim()
+        TARGET_BRANCH = sh(
+                    script: “git branch --contains ${scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT}”,
+                    returnStdout: true
+                ).trim()
     }
     stages {
         stage('Hello') {
@@ -15,7 +19,7 @@ pipeline{
         }
         stage('Check') {
                 when {
-                    expression { SOURCE_BRANCH == 'staging' }
+                    expression { SOURCE_BRANCH == 'staging' && TARGET_BRANCH == 'dev' }
                 }
             steps {
                 echo 'Yes, source branch is staging'
