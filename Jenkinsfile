@@ -19,7 +19,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                echo BRANCH_NAME
+                echo $BRANCH_NAME
             }
         }
  /*    stage('Checkout') {
