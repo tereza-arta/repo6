@@ -23,7 +23,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                echo 'source branch is $SOURCE_BRANCH'
+                echo 'source branch is {env.SOURCE_BRANCH}'
                             
             }
         }
