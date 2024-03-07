@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment { 
-        CC = 'clang'
+        SOME_CC = 'clang'
     }
     stages {
         stage('Hello') {
@@ -12,7 +12,7 @@ pipeline{
         }
         stage('Check') {
                 when {
-                    expression { CC == 'clang' }
+                    expression { SOME_CC == 'clang' }
                 }
             steps {
                 echo 'Yes, CC is clang'
