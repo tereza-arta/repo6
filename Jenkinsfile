@@ -22,20 +22,14 @@ pipeline{
                             
             }
         }
-        stage('Get Merged Branches') {
+        stage('Get Merged Branch Name') {
             steps {
                 script {
-                    // Run git command to get merged branches
-                    def mergedBranches = sh(script: 'git branch --merged', returnStdout: true).trim()
+                    // Run git command to get the name of the merged branch
+                    def mergedBranchName = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
                     
-                    // Split the output by newline character
-                    def mergedBranchList = mergedBranches.tokenize('\n')
-                    
-                    // Iterate through each branch name
-                    for (String branch in mergedBranchList) {
-                        // Perform actions with each merged branch name
-                        echo "Merged branch: $branch"
-                    }
+                    // Print the name of the merged branch
+                    echo "Merged branch name: $mergedBranchName"
                 }
             }
         }
