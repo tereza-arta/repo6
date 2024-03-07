@@ -1,7 +1,10 @@
 pipeline{
     agent any
     environment { 
-        SOME_CC = 'clang'
+        SOURCE_BRANCH = sh(
+                    script: "git log --merges --first-parent origin/main | awk '/Merge pull request/{split(\$NF, arr, \"/\"); print arr[2]}' | head -1",
+                    returnStdout: true
+                ).trim()
     }
     stages {
         stage('Hello') {
@@ -12,10 +15,10 @@ pipeline{
         }
         stage('Check') {
                 when {
-                    expression { SOME_CC == 'clang' }
+                    expression { SOURCE_BRANCH == 'staging' }
                 }
             steps {
-                echo 'Yes, CC is clang'
+                echo 'Yes, source branch is staging'
             }
         }
  /*    stage('Checkout') {
