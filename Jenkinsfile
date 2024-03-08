@@ -6,7 +6,7 @@ pipeline{
                     returnStdout: true
                 ).trim()
         TARGET_BRANCH = sh(
-                    script: "git log --merges --first-parent origin/main | tail -n 1 | sed '^ *[^ ]* *\([^ ]*\) .*/\1/'",
+                    script: "git log --merges --first-parent origin/main | tail -n 1 | cut -d " " -f1",
                     returnStdout: true
                 ).trim()
     }
