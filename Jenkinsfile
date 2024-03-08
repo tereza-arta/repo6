@@ -35,7 +35,7 @@ pipeline{
                 script {
                     def log = "Exception on saving user with username:johntheripper"
                     def username = log.substring(log.lastIndexOf(":") + 1, log.length())
-                    println username
+                    echo username
                     /* writeFile file: 'groovy1.txt', text: env.TARGET_BRANCH
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
