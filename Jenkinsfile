@@ -31,7 +31,7 @@ pipeline{
             steps {
                 echo 'Yes, source branch is staging'
                 script {
-                    writeFile file: 'groovy1.txt', text: ${env.TARGET_BRANCH}
+                    writeFile file: 'groovy1.txt', text: env.TARGET_BRANCH
                     //writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
