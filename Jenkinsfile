@@ -35,13 +35,8 @@ pipeline{
                     //writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
-                    class Example { 
-                       static void main(String[] args) { 
-                          String a = "HelloWorld"; 
-                          println(a.substring(4)); 
-                          println(a.substring(4,8));
-   }
-}
+                    def line = env.TARGET_BRANCH
+                    echo ${line}
                 }
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
