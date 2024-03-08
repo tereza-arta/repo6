@@ -1,6 +1,6 @@
 def function() {
-  echo "Target branch is ${env.TARGET_BRANCH}" > file.txt
-  sh 'ls'
+/*  echo "Target branch is ${env.TARGET_BRANCH}" */ 
+  sh "ls"
 }
 
 return this
