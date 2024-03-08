@@ -6,7 +6,7 @@ pipeline{
                     returnStdout: true
                 ).trim()
         TARGET_BRANCH = sh(
-                    script: "git log --merges --first-parent origin/main",
+                    script: "git log --merges --first-parent origin/main | tail -n 1 | awk '{ print $2 }'",
                     returnStdout: true
                 ).trim()
     }
