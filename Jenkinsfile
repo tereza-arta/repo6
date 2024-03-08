@@ -6,7 +6,7 @@ pipeline{
                     returnStdout: true
                 ).trim()
         TARGET_BRANCH = sh(
-                    script: "git log --merges --first-parent origin/main | awk '{print}' | tail -n 1",
+                    script: "git log --merges --first-parent origin/main | tail -n 1",
                     returnStdout: true
                 ).trim() 
     }
@@ -23,6 +23,8 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
+                sh 'echo ${env.TARGET_BRANCH} > small_file.txt'
+                sh 'ls -ltr'
                 echo "target branch is ${env.TARGET_BRANCH}"
                             
             }
