@@ -37,7 +37,7 @@ pipeline{
                     sh 'cat groovy1.txt'
                     def line = env.TARGET_BRANCH
                     echo line
-                    assert text.takeBetween('merge', 'to')
+                    def var = assert text.takeBetween('merge', 'to')
                 }
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
