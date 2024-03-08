@@ -36,7 +36,7 @@ pipeline{
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
                     def line = env.TARGET_BRANCH
-                    echo ${line}
+                    echo line
                 }
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
