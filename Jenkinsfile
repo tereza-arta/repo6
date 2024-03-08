@@ -30,8 +30,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                sh "export NEW_VAR="${env.TARGET_BRANCH}""
-                sh "echo $NEW_VAR"
+                sh "${env.TARGET_BRANCH} > file.txt"
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
                 '''
