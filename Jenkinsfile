@@ -30,7 +30,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                echo "${env.TARGET_BRANCH}" > file.txt
+                sh "vim file.sh"
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
                 '''
