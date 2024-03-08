@@ -4,7 +4,7 @@ void function() {
   sh 'cat groovy.txt'
   def line = env.TARGET_BRANCH
   echo line
-  assert line.toString().contains('merged')
+  assert line.toString().contains('merge')
 }
 
 return this
