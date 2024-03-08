@@ -35,7 +35,7 @@ pipeline{
                     //writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
-                    def line = env.TARGET_BRANCH
+                    final String line = env.TARGET_BRANCH
                     echo line
                     assert line.takeBetween('merge', 'to') == ' dev '
                 }
