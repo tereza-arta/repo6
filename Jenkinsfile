@@ -2,9 +2,6 @@ def gv
 
 pipeline{
     agent any
-    tools {
-        jdk 'java-8.0.292'
-    }
     environment { 
         SOURCE_BRANCH = sh(
                     script: "git log --merges --first-parent origin/main | awk '/Merge pull request/{split(\$NF, arr, \"/\"); print arr[2]}' | head -1",
@@ -38,7 +35,7 @@ pipeline{
                 script {
                     def log = "Exception on saving user with username:johntheripper"
                     def username = log.substring(log.lastIndexOf(":") + 1, log.length())
-                    println username
+                    echo username
                     /* writeFile file: 'groovy1.txt', text: env.TARGET_BRANCH
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
