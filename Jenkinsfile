@@ -10,8 +10,8 @@ pipeline{
                     returnStdout: true
                 ).trim() 
     }
-    /*stages {
-        stage('Init') {
+    stages {
+        /*stage('Init') {
             steps {
                 script {
                     gv = load "script.groovy"
