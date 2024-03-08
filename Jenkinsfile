@@ -37,7 +37,9 @@ pipeline{
                     sh 'cat groovy1.txt'
                     final String line = env.TARGET_BRANCH
                     echo line
-                    assert line.takeBetween("merge", "to") == " dev "
+                    //assert line.takeBetween("merge", "to") == " dev "
+                    def text = 'Just saying: "Groovy is gr8!"'
+                    assert text.takeBetween('is', '!') == ' gr8'
                 }
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
