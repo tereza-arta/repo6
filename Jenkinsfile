@@ -1,3 +1,5 @@
+def gv
+
 pipeline{
     agent any
     environment { 
@@ -11,13 +13,13 @@ pipeline{
                 ).trim() 
     }
     stages {
-        /*stage('Init') {
+        stage('Init') {
             steps {
                 script {
                     gv = load "script.groovy"
                 }
             }
-        }*/
+        }
         stage('Hello') {
             steps {
                 echo 'Hello world'
@@ -31,15 +33,14 @@ pipeline{
             steps {
                 echo 'Yes, source branch is staging'
                 script {
-                    writeFile file: 'groovy1.txt', text: env.TARGET_BRANCH
-                    //writeFile file: 'groovy1.txt', text: 'Working with files the Groovy way is easy.'
+                    /* writeFile file: 'groovy1.txt', text: env.TARGET_BRANCH
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
                     final String line = env.TARGET_BRANCH
                     echo line
-                    //assert line.takeBetween("merge", "to") == " dev "
                     def text = 'Just saying: "Groovy is gr8!"'
-                    assert text.takeBetween('is', '!') == ' gr8'
+                    assert text.takeBetween('is', '!') == ' gr8' */
+                    gv.function()
                 }
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
