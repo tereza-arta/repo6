@@ -6,9 +6,9 @@ pipeline{
                     returnStdout: true
                 ).trim()
         TARGET_BRANCH = sh(
-                    script: "git log --merges --first-parent origin/main | awk '{ print $1}' | tail -n 1",
+                    script: "git log --merges --first-parent origin/main | awk '{print $1}' | tail -n 1",
                     returnStdout: true
-                ).trim()
+                ).trim() 
     }
     stages {
         stage('Hello') {
