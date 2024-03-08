@@ -1,3 +1,5 @@
+def gv
+
 pipeline{
     agent any
     environment { 
@@ -11,6 +13,13 @@ pipeline{
                 ).trim() 
     }
     stages {
+        stage('Init') {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage('Hello') {
             steps {
                 echo 'Hello world'
@@ -23,9 +32,9 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                sh 'echo ${env.TARGET_BRANCH}'
-                sh 'ls -ltr'
-                echo "target branch is ${env.TARGET_BRANCH}"
+                script {
+                    gv.function()
+                }
                             
             }
         }
