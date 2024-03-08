@@ -11,7 +11,11 @@ pipeline{
                     script: "git log --merges --first-parent origin/main | tail -n 1",
                     returnStdout: true
                 ).trim() 
+        VAR = "hello"
     }
+    when {
+                    expression { VAR == 'hello' }
+                
     stages {
         stage('Init') {
             steps {
@@ -43,4 +47,5 @@ pipeline{
             }
         }
     }
+  }      
 }
