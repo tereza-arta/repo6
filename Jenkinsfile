@@ -33,13 +33,6 @@ pipeline{
             steps {
                 echo 'Yes, source branch is staging'
                 script {
-                    def name = 'Groovy'
-                    def template = """
-                        Dear Mr ${name}, You're the winner of the lottery! Yours sincerly, Dave
-                    """
-                    assert template.toString().contains('Grovy')
-
-
                     /* writeFile file: 'groovy1.txt', text: env.TARGET_BRANCH
                     sh 'ls -l groovy1.txt'
                     sh 'cat groovy1.txt'
