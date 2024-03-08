@@ -32,7 +32,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                sh "export NEW_VAR=${env.TARGET_BRANCH}"
+               // sh "export NEW_VAR=${env.TARGET_BRANCH}"
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
                 '''
