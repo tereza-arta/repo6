@@ -23,7 +23,7 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
-                sh 'echo "${env.TARGET_BRANCH}" > small_file.txt'
+                sh 'echo ${env.TARGET_BRANCH}'
                 sh 'ls -ltr'
                 echo "target branch is ${env.TARGET_BRANCH}"
                             
