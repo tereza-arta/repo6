@@ -30,6 +30,11 @@ pipeline{
                 }
             steps {
                 echo 'Yes, source branch is staging'
+                script {
+                   def file1 = new File('file.txt')
+                   file1.write 'Working with files the Groovy way is easy.\n'
+                   sh 'ls -l'
+                }
                 /*sh '''#!/bin/bash
                         echo "${env.TARGET_BRANCH}"
                 '''
