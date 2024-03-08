@@ -5,7 +5,7 @@ void function() {
   final String line = env.TARGET_BRANCH
   echo line
   def text = 'Just saying: "Groovy is gr8!"'
-  assert text.takeBetween('is', '!') == ' gr8'
+  assert text.takeBetween("is", "!") == " gr8"
 }
 
 return this
