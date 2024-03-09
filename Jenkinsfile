@@ -25,11 +25,11 @@ pipeline{
         }
         stage('Check') {
             when {
-                    expression { SOURCE_BRANCH == 'other_branch' }
+                    expression { SOURCE_BRANCH == 'staging' }
             }
             steps {
                 echo env.BRANCH_NAME
-                echo "Merging branch is <other_branch>"
+                echo "Merging branch is <staging>"
                 script {
                     gv.function()
                     echo "Receiving branch is <dev>"
