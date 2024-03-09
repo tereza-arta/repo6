@@ -19,6 +19,7 @@ pipeline{
                 script {
                     if (env.SHOULD_RUN == 'true') {
                         gv = load "script.groovy"
+                        echo env.SOURCE_BRANCH
                     }
                 }
             }
