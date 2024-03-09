@@ -25,7 +25,7 @@ pipeline{
         }
         stage('Check') {
             when {
-                    expression { SOURCE_BRANCH == 'other_branch' }
+                    expression { env.SOURCE_BRANCH == 'other_branch' }
             }
             steps {
                 echo "code from other branch"
