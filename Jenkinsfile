@@ -12,7 +12,7 @@ pipeline{
                     returnStdout: true
                 ).trim() 
         MVAR = sh(
-                    script: "git log --merges --first-parent origin/main | tail -n 1",
+                    script: "git log --merges --first-parent origin/main",
                     returnStdout: true
                 ).trim()
         SHOULD_RUN = 'true'
