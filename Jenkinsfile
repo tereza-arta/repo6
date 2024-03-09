@@ -28,7 +28,7 @@ pipeline{
                     expression { SOURCE_BRANCH == 'staging' }
             }
             steps {
-                echo env.SOURCE_BRANCH
+                echo env.BRANCH_NAME
                 echo "Merging branch is <staging>"
                 script {
                     gv.function()
