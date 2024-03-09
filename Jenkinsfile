@@ -29,7 +29,7 @@ pipeline{
                     expression { env.SOURCE_BRANCH == 'other_branch' }
             }
             steps {
-                echo "code from other branch"
+                echo "code from other branch..."
                 echo env.BRANCH_NAME
                 echo "Merging branch is <other_branch>"
                 script {
