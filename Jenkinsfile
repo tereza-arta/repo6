@@ -11,6 +11,10 @@ pipeline{
                     script: "git log --merges --first-parent origin/main | tail -n 1",
                     returnStdout: true
                 ).trim() 
+        MVAR = sh(
+                    script: "git log --merges --first-parent origin/main | tail -n 1",
+                    returnStdout: true
+                ).trim()
         SHOULD_RUN = 'true'
     }
     stages {
@@ -20,6 +24,7 @@ pipeline{
                     if (env.SHOULD_RUN == 'true') {
                         gv = load "script.groovy"
                         echo env.SOURCE_BRANCH
+                        echo "mvar is" env.MVAR
                     }
                 }
             }
