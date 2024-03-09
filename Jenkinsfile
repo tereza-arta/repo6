@@ -11,10 +11,6 @@ pipeline{
                     script: "git log --merges --first-parent origin/main | tail -n 1",
                     returnStdout: true
                 ).trim() 
-        MVAR = sh(
-                    script: "git log --merges --first-parent origin/main",
-                    returnStdout: true
-                ).trim()
         SHOULD_RUN = 'true'
     }
     stages {
@@ -23,20 +19,18 @@ pipeline{
                 script {
                     if (env.SHOULD_RUN == 'true') {
                         gv = load "script.groovy"
-                        echo env.SOURCE_BRANCH
-                        echo env.MVAR
+                        echo "from init stage"
                     }
                 }
             }
         }
         stage('Check') {
             when {
-                    expression { env.SOURCE_BRANCH == 'other_branch' }
+                    expression { SOURCE_BRANCH == 'staging' }
             }
             steps {
-                echo "code from other branch..."
                 echo env.BRANCH_NAME
-                echo "Merging branch is <other_branch>"
+                echo "Merging branch is <staging>"
                 script {
                     gv.function()
                     echo "Receiving branch is <dev>"
@@ -51,7 +45,6 @@ pipeline{
         stage('Test') {
             steps {
                 echo "Testing the ptoject..."
-                echo "hello from build stage"
             }
         }
         stage('Deploy') {
