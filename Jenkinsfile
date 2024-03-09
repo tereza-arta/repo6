@@ -45,6 +45,7 @@ pipeline{
         stage('Test') {
             steps {
                 echo "Testing the ptoject..."
+                echo "hello from build stage"
             }
         }
         stage('Deploy') {
